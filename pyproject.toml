@@ -1,0 +1,16 @@
+[project]
+name = "accommodation"
+version = "1.0.0"
+description = "Experimental Accommodation Framework"
+authors = [{ name = "Accommodation" }]
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["accommodation*"]
+
+[project.scripts]
+accommodation = "accommodation.main:main"
