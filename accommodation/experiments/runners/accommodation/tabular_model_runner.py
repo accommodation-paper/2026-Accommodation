@@ -32,7 +32,7 @@ def run_experiment(dataset: str, args: dict, train_loader: DataLoader, val_loade
         model = instantiate_model(args).to(args['device'])
         serializable_configuration = config(args)
 
-        criterion = AccommodationLoss()
+        criterion = AccommodationLoss(differentiation_lambda=args['differentiation-lambda'])
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
         metrics = []
@@ -51,7 +51,7 @@ def run_experiment(dataset: str, args: dict, train_loader: DataLoader, val_loade
                 optimizer.step()
                 train_loss += loss.item()
                 model.accommodation_layer.add_info(h.detach(), yb)
-            model.accommodation_layer.update_plasticity(gamma=10, p_min=0, p_max=1)
+            model.accommodation_layer.update_plasticity(gamma=args['plasticity-gamma'], p_min=0, p_max=1)
             train_loss /= len(train_loader)
 
             model.eval()

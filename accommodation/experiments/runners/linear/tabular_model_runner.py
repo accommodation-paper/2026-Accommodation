@@ -32,7 +32,7 @@ def run_experiment(dataset: str, args: dict, train_loader: DataLoader, val_loade
             "balanced_accuracy": -1
         }
 
-        for epoch in range(1, 6):
+        for epoch in range(1, args['epochs'] + 1):
             model.train()
             train_loss = 0.0
             for xb, yb in train_loader:

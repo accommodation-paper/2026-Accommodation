@@ -17,7 +17,7 @@ from accommodation.experiments.experiments.linear.sctp import run_linear_sctp_ex
 from accommodation.experiments.experiments.linear.yelp import run_linear_yelp_experiment
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="MNIST Linear Classifier Experiment")
+    parser = argparse.ArgumentParser(description="Experimental CLI for accommodation")
     parser.add_argument("--num-cycles", dest="num-cycles", type=int, default=2, help="Number of training cycles (default: 2)")
     parser.add_argument("--type", dest="type", type=str, choices=["linear", "accommodation"], default="accommodation", help="Type of experiment: 'linear' or 'accommodation' (default: accommodation)")
     parser.add_argument("--device", dest="device", type=str, default="cuda" if torch.cuda.is_available() else "cpu", help="Device to use: 'cuda' or 'cpu' (default: auto)")
